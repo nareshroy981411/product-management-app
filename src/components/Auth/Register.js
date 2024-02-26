@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import "./Register.css";
 
 const Register = () => {
@@ -100,6 +100,9 @@ const Register = () => {
           </div>
           <button type="submit">Register</button>
         </form>
+        <div className="login-link">
+          Already have an account? <Link to="/login">Login</Link>
+        </div>
       </div>
     </div>
   );

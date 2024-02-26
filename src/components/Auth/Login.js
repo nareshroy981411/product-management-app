@@ -54,7 +54,7 @@
 // export default Login;
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import authService from "../../services/authService";
 import "./Login.css";
 
@@ -106,6 +106,9 @@ const Login = () => {
           </div>
           <button type="submit">Login</button>
         </form>
+        <div className="Register-link">
+          Dont have an account? <Link to="/Register">Register</Link>
+        </div>
       </div>
     </div>
   );

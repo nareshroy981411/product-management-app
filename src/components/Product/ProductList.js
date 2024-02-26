@@ -85,11 +85,11 @@ const ProductListPage = () => {
           <SearchBar onSearch={handleSearch} />
         </div>
       </div>
-      <div className="product-container" style={{ marginTop: "60px" }}>
+      <div className="productCcontainer" style={{ marginTop: "60px" }}>
         {products.slice(startIndex, endIndex).map((product, i) => (
           <div
             key={product.id}
-            className="product-card"
+            className="productCard"
             onClick={() => handleProductClick(product.id)}
           >
             <img

@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import productService from "../../services/productService";
-import Carousel from "react-bootstrap/Carousel";
 import "./ProductDetail.css";
 
 const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
 
   useEffect(() => {
     const fetchProductDetail = async () => {
@@ -25,22 +19,27 @@ const ProductDetail = () => {
 
     fetchProductDetail();
   }, [productId]);
-  console.log("Singlr product - ", product);
+
+  console.log("Single product - ", product);
+
   return (
     <div className="product-detail-container">
       {product ? (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-          {product.images.map((image, index) => (
-            <Carousel.Item key={index}>
-              <img src={image} alt={product.title} />
-              <Carousel.Caption>
-                <h3>{index+1} {product.title}</h3>
-                <p><span>Description :</span>{product.description}</p>
-                <p><span>Price: </span>${product.price}</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        <div className="detail-card">
+          <div className="detail-images">
+            {product.images.map((image, index) => (
+              <img key={index} src={image} alt={product.title} style={{ width: '150px', height: '150px' }} />
+            ))}
+          </div>
+          <div className="details">
+            <h3>{product.title}</h3>
+            <p><span>Description:</span> {product.description}</p>
+            <p><span>Price:</span> ${product.price}</p>
+          </div>
+          <div className="back-button">
+        <button><Link to="/ProductList">Back</Link></button>
+      </div>
+        </div>
       ) : (
         <p>Loading...</p>
       )}

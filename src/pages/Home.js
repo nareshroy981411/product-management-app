@@ -1,10 +1,12 @@
 import React from "react";
 import Register from "../components/Auth/Register";
+import Login from "../components/Auth/Login";
 
 const HomePage = () => {
   return (
     <div>
-      <Register />
+      {/* <Register /> */}
+      <Login/>
     </div>
   );
 };
